@@ -35,6 +35,11 @@ RUN apt-get update && \
     && echo 'ea8277df4297afc507c61122f3c349af142f31e5 wkhtmltox.deb' | sha1sum -c - \
     && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
     && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
+    
+# install extra libs - Codetein SAS 2022-09-03
+# polib= otros idiomas odoo-docker, pysftp para backups
+RUN pip3 install --upgrade pip
+RUN pip3 install pysftp==0.2.9 polib==1.1.1 unicodecsv unidecode email_validator
 
 # install latest postgresql-client
 RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
